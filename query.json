@@ -1,0 +1,69 @@
+{
+    "results": {
+        "A": {
+            "status": 200,
+            "frames": [
+                {
+                    "schema": {
+                        "name": "A",
+                        "refId": "A",
+                        "meta": {
+                            "typeVersion": [
+                                0,
+                                0
+                            ],
+                            "preferredVisualisationType": "trace",
+                            "executedQueryString": "SELECT \n  toStartOfInterval(Timestamp, INTERVAL 5  minute) as startTime,\n  avg(multiply(\"Duration\", 0.000001)) as avg5_duration,\n  max(multiply(\"Duration\", 0.000001)) as max5_duration,\n  min(multiply(\"Duration\", 0.000001)) as min5_duration,\n  sum(multiply(\"Duration\", 0.000001)) as sum5_duration\nFROM \"default\".\"otel_traces\" \nWHERE ( Timestamp \u003e= toDateTime(1719665929) AND Timestamp \u003c= toDateTime(1719669529) ) AND ( ParentSpanId = '' ) AND ( Duration \u003e 0 ) \nGROUP BY startTime\nORDER BY startTime "
+                        },
+                        "fields": [
+                            {
+                                "name": "startTime",
+                                "type": "time",
+                                "typeInfo": {
+                                    "frame": "time.Time"
+                                }
+                            },
+                            {
+                                "name": "avg5_duration",
+                                "type": "number",
+                                "typeInfo": {
+                                    "frame": "float64"
+                                }
+                            },
+                            {
+                                "name": "max5_duration",
+                                "type": "number",
+                                "typeInfo": {
+                                    "frame": "float64"
+                                }
+                            },
+                            {
+                                "name": "min5_duration",
+                                "type": "number",
+                                "typeInfo": {
+                                    "frame": "float64"
+                                }
+                            },
+                            {
+                                "name": "sum5_duration",
+                                "type": "number",
+                                "typeInfo": {
+                                    "frame": "float64"
+                                }
+                            }
+                        ]
+                    },
+                    "data": {
+                        "values": [
+                            [],
+                            [],
+                            [],
+                            [],
+                            []
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}
